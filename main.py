@@ -44,12 +44,15 @@ def predict():
    # X_New=normalize_corpus(X_New)
 
 
-    pipe = joblib.load('naiveBayesClassifier.pkl')
+    pipe2 = joblib.load('naiveBayesClassifier.pkl')
+    pipe = joblib.load('neuralNetworkClassifier.pkl')
 
     resultGenrePredict = pipe[0].predict(X_New)
+    resultEmosiPredict = pipe2[0].predict(X_New)
 
 
-    return jsonify({'message': format(resultGenrePredict)})
+
+    return jsonify({'genre': format(resultGenrePredict),'emosi' : format(resultEmosiPredict)})
 
 
 if __name__ == '__main__':
